@@ -87,7 +87,7 @@ int raiseToPower(int num, int pow) {
     return res;
 }
 
-//Перемішування Фішера-Йейтсаq
+//Перемішування Фішера-Йейтса
 
 void FisherYates(int *arr, int n) {
     int i, j, tmp;
@@ -99,6 +99,8 @@ void FisherYates(int *arr, int n) {
         arr[i] = tmp;
     }
 }
+
+//Функція генерації десяткового S-Box'у
 
 int *SBoxGeneratingDec(int n, int m, int counter) {
     int size = raiseToPower(2, n);
@@ -136,6 +138,8 @@ int *valueToBinary(int i, int rank) {
     return res;
 }
 
+//Функція генерації двійкових елементів у зворотньому порядку
+
 int *binaryElementsApprox(int *arr, int size, int count) {
     int *result = (int *) calloc(size * count, sizeof(int));
     for (int i = 0; i < size; ++i) {
@@ -147,6 +151,8 @@ int *binaryElementsApprox(int *arr, int size, int count) {
     }
     return result;
 }
+
+//Функція генерації S-Box'у у зворотньому порядку
 
 int *SBoxApprox(int *sbox, int size, int count) {
     int *result = binaryElementsApprox(sbox, size, count);
@@ -264,6 +270,8 @@ int *binaryElements(int *arr, int size, int count) {
     }
     return result;
 }
+
+//Функція перетворення S-Box'у на набір булевих функцій
 
 int *SBoxToBooleanFunc(int *sbox, int size, int count) {
     //printf("\nS-BOX\n");
@@ -386,6 +394,8 @@ int *HadamardCoefficients(const int *func, int size, int count) {
     free(w);
     return result;
 }
+
+//Функція бульбашкового сортування
 
 void bubbleSort(int *data, int size) {
     int i, j;
