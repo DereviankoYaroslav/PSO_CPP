@@ -1103,12 +1103,12 @@ int *particleSwarmOptimization(int size, int count, int N, int maxIter, int mode
     for (int h = 0; h < N; ++h) {
         int LAT3 = LATMax(population[h], size, count);
         int NL3 = raiseToPower(2, count - 1) - LAT3;
-        printf("\nNon-linearity from LAT = %d \n", NL3);
+        printf("\nNon-linearity = %d \n", NL3);
         int ucCheck3 = linearRedundancy(population[h], 256, 8);
         int ai3 = algebraicImmunity(population[h], 256, 8);
         int du3 = deltaUniformity(population[h], 256, 8);
-        printf("\nImmunity   = %d \n", ai3);
-        printf("\nDelta-Uniformity  = %d \n", du3);
+        printf("\nAlgebraic Immunity = %d \n", ai3);
+        printf("\nDelta-Uniformity = %d \n", du3);
         int lr;
         if (ucCheck3 == 1) {
             printf("\nLinear redundancy = %d \n", (256) - ucCheck3);
