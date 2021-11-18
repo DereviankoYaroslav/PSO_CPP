@@ -70,7 +70,7 @@ int main() {
     int finalIter = 0;
     int mode = 1;
     int N = 4;
-    int maxIter = 5;
+    int maxIter = 10;
 
     int *ar = particleSwarmOptimization(256, 8, N, maxIter, mode, &finalIter);
     system("PAUSE");
@@ -876,7 +876,7 @@ int *particleSwarmOptimization(int size, int count, int N, int maxIter, int mode
         }
         printf("\n\n");
     }
-    /*double weight1 = 0.1;
+    double weight1 = 0.1;
     double weight2 = 1.6;
     double weightCur;
     int curIter = 0;
@@ -928,9 +928,9 @@ int *particleSwarmOptimization(int size, int count, int N, int maxIter, int mode
                     tempSbox[j] = X;
                 } else {
                     tempSbox[j] = myModulusDec((tempSbox[j] + rand()), 256);
-                    if (tempSbox[j] == 0){
+                    /*if (tempSbox[j] == 0){
                         tempSbox[j] = myModulusDec((tempSbox[j]+rand()),256);
-                    }
+                    }*/
                 };
                 //printf("\n%d temp box b4 cycle [%d]", tempSbox[j],j);
                 contains = 0;
@@ -972,7 +972,7 @@ int *particleSwarmOptimization(int size, int count, int N, int maxIter, int mode
             }
             //printf("\n");
         }
-        printf("\nNEW Arrays\n");
+        /*printf("\nNEW Arrays\n");
         for (int q = 0; q < 2*N; ++q){
             for(int w = 0; w < size; ++w){
                 printf("%d, ",population[q][w]);
@@ -982,7 +982,7 @@ int *particleSwarmOptimization(int size, int count, int N, int maxIter, int mode
             printf( "\nNon-linearity from LAT = %d \n", NL);
             printf("\n");
             printf("\n\n");
-        }
+        }*/
         int arrNL2[2 * N];
         for (int q = 0; q < 2 * N; ++q) {
             for (int w = 0; w < size; ++w) {
@@ -1081,7 +1081,7 @@ int *particleSwarmOptimization(int size, int count, int N, int maxIter, int mode
                 maxIter = -99;
                 break;
             }
-            if (flag102 == 0 && NL3 == 102 && ai3 == 3 && lr == 0){
+            /*if (flag102 == 0 && NL3 == 102 && ai3 == 3 && lr == 0){
                 FILE *fileLocal;
                 fopen_s(&fileLocal, "Table results N, MaxIter, IterToFind, Time.txt", "a");
                 if (fileLocal == NULL) {
@@ -1094,30 +1094,11 @@ int *particleSwarmOptimization(int size, int count, int N, int maxIter, int mode
                 printf("current iter = %d ",curIter+1);
                 fclose(fileLocal);
                 flag102 = 1;
-            }
+            }*/
         }
         maxIter = maxIter-1;
         mode = 0;
         ++curIter;
-    }*/
-    for (int h = 0; h < N; ++h) {
-        int LAT3 = LATMax(population[h], size, count);
-        int NL3 = raiseToPower(2, count - 1) - LAT3;
-        printf("\nNon-linearity = %d \n", NL3);
-        int ucCheck3 = linearRedundancy(population[h], 256, 8);
-        int ai3 = algebraicImmunity(population[h], 256, 8);
-        int du3 = deltaUniformity(population[h], 256, 8);
-        printf("\nAlgebraic Immunity = %d \n", ai3);
-        printf("\nDelta-Uniformity = %d \n", du3);
-        int lr;
-        if (ucCheck3 == 1) {
-            printf("\nLinear redundancy = %d \n", (256) - ucCheck3);
-            lr = 256 - ucCheck3;
-        } else {
-            printf("\nLinear redundancy = %d \n", (256 - 1) - ucCheck3);
-            lr = (256 - 1) - ucCheck3;
-        }
-        printf("\n");
     }
     //printf("\n\nFinal data\n\n");
     int *result = (int *) calloc((N*size), sizeof(int));
